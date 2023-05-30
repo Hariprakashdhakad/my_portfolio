@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/930722d1b5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo1.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li> 
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa fa-bars" onclick="openmenu()"></i>
+             </nav>
+           <div class="header-text">
+                <p>Web designer & developer</p>
+                <h1>Hi,I'm <span>Hari Prakash</span><br>From Bangalore</h1>
+           </div>
+        </div>
+    </div>
+    
+    <!--------about------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>Motivated and enthusiastic fresher seeking to start a career in web development. 
+                        Proficient in HTML, CSS, and JavaScript, and eager to learn more about web development technologies and frameworks.
+                        Collaborative team player with excellent communication skills.
+                         Dedicated to delivering quality work and willing to put in extra effort to meet project goals and deadlines.
+                          </p>
+                          <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                          </div>
+                          <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>UI/UX</span><br>Designing Web interfaces</li>
+                                <li><span>Web Development</span><br>Web app Development</li>
+                                <li><span>Programming languages</span><br>Java,JavaScript</li>
+                          </div>
+                          <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2020-2024</span><br>Btech from Reva University,Bangalore</li>
+                                <li><span>2020</span><br>12th,Arihant Ch. Sr. Sec. School,Kota</li>
+                                <li><span>2018</span><br>10th,Arihant Ch. Sr. Sec. School,Kota</li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <!--Services-->
+    
+    <div id="services"></div>
+    <h1 class="sub-title">My Services</h1>
+    <div class="services-list">
+        <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Web Designer</h2>
+            <p>Skilled in creating responsive and mobile-friendly 
+                website designs using HTML, CSS, and JavaScript.
+            </p>
+        </div>
+        <div>
+            <i class="fa-solid fa-laptop-code"></i>
+            <h2>Web Developer</h2>
+            <p>As a web developer, I have extensive experience in front-end and back-end development, utilizing various technologies
+             and frameworks to build responsive and user-friendly websites.
+            </p>
+        </div>
+
+    </div>
+
+    <!--contact-->
+<div id="contact">
+    <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-titles">Contact Me</h1>
+                    <p>Hariprakash2960@gmail.com</p>
+                    <p>9460196632</p>
+                 <div class="social-icon">
+                     <a href="https://www.linkedin.com/in/hari-prakash-dhakad-93a5a7251/" target=”_blank” title="Linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Hariprakashdhakad" target=”_blank” title="GitHub"> <i class="fa-brands fa-github"></i></a>
+                </div>
+                <a href="./Resume/Hari's Resume-hackerresume.pdf" download="" class="button btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your email" required>
+                    <textarea name="Message"  rows="6" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="button btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+        
+    </div>
+    <div class="copyright">
+        <p>Copyright &#169; Hari Prakash </p>
+    </div>
+</div>
+
+</body>
+<script>
+    var tablinks=document.getElementsByClassName("tab-links");
+    var tabcontents=document.getElementsByClassName("tab-contents");
+     
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+<script>
+    var sidemenu=document.getElementById("sidemenu");
+    function openmenu(){
+        sidemenu.style.right="0";
+    }
+    function closemenu(){
+        sidemenu.style.right="-200px";
+    }
+</script>
+
+  
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxbNar3BQ6p_-XE8F2nzf4uOCre8mhPdaKl36ohahh-3yuD-QSVZIR02HjS8mpFsJw5aQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg =document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent sucessfully";
+            setTimeout(function(){
+                msg.innerHTML=""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</html>
